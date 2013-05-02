@@ -1,5 +1,9 @@
-(setq dotfiles-dir "~/.emacs.d/")
+(defvar *emacs-load-start* (current-time)) ; Time .init.el
 
+(setq dotfiles-dir "~/.emacs.d/") ;specify this dir
+
+(setq custom-file "~/.emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
+(load custom-file 'noerror)
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
@@ -28,3 +32,7 @@
 (show-paren-mode 1)
 (transient-mark-mode t)
 (global-font-lock-mode t)
+
+
+(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))

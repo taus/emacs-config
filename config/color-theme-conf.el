@@ -1,3 +1,3 @@
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-billw)
+(color-theme-jsc-dark)
