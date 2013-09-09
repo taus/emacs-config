@@ -5,6 +5,8 @@
 (setq custom-file "~/.emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
 (load custom-file 'noerror)
 
+(global-unset-key "\C-z")
+
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path)) ;; set path to include site-lisp and subdirs
@@ -22,11 +24,12 @@
 		     "ido-conf.el"
 		     "backup-conf.el"
 		     "magit-conf.el"
+		     "c++-conf.el"
 		     ))
 
 
-
-
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . c-mode))
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
 (show-paren-mode 1)

@@ -16,16 +16,18 @@
 			     (flyspell-mode 1)
 			     (auto-fill-mode 1)
                              (reftex-mode 1)
+			     (LaTeX-math-mode 1)
 			     ))
 
 
-
+(defun reftex-format-cref (label def-fmt)
+  (format "\\ref{%s}" label))
+(setq reftex-format-ref-function 'reftex-format-cref)
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 (setq TeX-PDF-mode t)
-
 (setq LaTeX-command-style
   '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)"))) ; fix pdflatex errors
 

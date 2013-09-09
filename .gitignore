@@ -3,3 +3,4 @@
 /config/latex-conf.el~
 /config/backup-conf.el~
 /auto-save-list/*
+/config/.#latex-conf.el
