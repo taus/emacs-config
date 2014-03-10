@@ -26,11 +26,11 @@
 		     "magit-conf.el"
 		     "c++-conf.el"
 		     "matlab-conf.el"
+		     "cmake-conf.el"
 		     ))
 
 
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cl\\'" . c-mode))
+
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
 (show-paren-mode 1)
@@ -42,3 +42,7 @@
                            (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+
+(autoload 'sml-mode "sml-mode" "Major mode for editing SML." t)
+(autoload 'run-sml "sml-proc" "Run an inferior SML process." t)
