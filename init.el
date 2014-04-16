@@ -2,7 +2,7 @@
 
 (setq dotfiles-dir "~/.emacs.d/") ;specify this dir
 
-(setq custom-file "~/.emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
+(setq custom-file "~/.emacs.d/emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
 (load custom-file 'noerror)
 
 (global-unset-key "\C-z")
@@ -27,6 +27,8 @@
 		     "c++-conf.el"
 		     "matlab-conf.el"
 		     "cmake-conf.el"
+		     "key-conf.el"
+		     "gud-conf.el"
 		     ))
 
 
@@ -38,11 +40,13 @@
 (global-font-lock-mode t)
 
 
-(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
-                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
+
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
 
 (autoload 'sml-mode "sml-mode" "Major mode for editing SML." t)
 (autoload 'run-sml "sml-proc" "Run an inferior SML process." t)
+
+(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
