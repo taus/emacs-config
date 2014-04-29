@@ -1,11 +1,17 @@
 (defvar *emacs-load-start* (current-time)) ; Time .init.el
 
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
+(setq debug-on-error t)
+
 (setq dotfiles-dir "~/.emacs.d/") ;specify this dir
 
 (setq custom-file "~/.emacs.d/emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
 (load custom-file 'noerror)
 
 (global-unset-key "\C-z")
+
+(defalias 'yes-or-no-p 'y-or-n-p) ; y or n is enough
+(setq confirm-kill-emacs 'y-or-n-p)
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
@@ -29,6 +35,9 @@
 		     "cmake-conf.el"
 		     "key-conf.el"
 		     "gud-conf.el"
+		     "irony-mode-conf.el"
+		     "erc-conf.el"
+		     "org-conf.el"
 		     ))
 
 
@@ -39,14 +48,6 @@
 (transient-mark-mode t)
 (global-font-lock-mode t)
 
-
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
-
-(autoload 'sml-mode "sml-mode" "Major mode for editing SML." t)
-(autoload 'run-sml "sml-proc" "Run an inferior SML process." t)
-
-(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
-                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
+;; apparently doesn't work in emacs 24
+;(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+;                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*))))) 

@@ -6,3 +6,6 @@
 /config/.#latex-conf.el/
 /semanticdb/
 /session.*
+/ac-comphist.dat
+/bookmarks
+/tutorial/English.tut

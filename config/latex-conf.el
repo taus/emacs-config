@@ -14,11 +14,10 @@
 
 (add-hook 'LaTeX-mode-hook (lambda ()
 			     (flyspell-mode 1)
-			     (auto-fill-mode 1)
                              (reftex-mode 1)
 			     (LaTeX-math-mode 1)
 			     (auto-fill-mode 0)
-
+			     (yas-minor-mode 1)
 			     ))
 
 
