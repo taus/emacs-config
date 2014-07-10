@@ -1,6 +1,7 @@
 (autoload 'latex-mode "auctex" "Set auctex as default tex mode" t)
 (add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
 
+(load "preview-latex.el" nil t t)
 
 (custom-set-variables
  '(reftex-plug-into-AUCTeX t))
@@ -34,5 +35,13 @@
   '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)"))) ; fix pdflatex errors
 
 
-
+;; nomenclature for latex
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list 
+                '("Nomenclature" "makeindex %s.nlo -s nomencl.ist -o %s.nls"
+                  (lambda (name command file)
+                    (TeX-run-command name command file)
+                    (TeX-process-set-variable file 'TeX-command-next TeX-command-default)
+		    )
+                  nil t :help "Create nomenclature file")))
 

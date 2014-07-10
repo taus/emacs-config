@@ -3,6 +3,7 @@
 (add-hook 'org-mode-hook (lambda ()
 			  (flyspell-mode 1)
 			  (auto-fill-mode 1)
+			  (local-unset-key  (kbd "<C-tab>"))
 			  )
 	  )
 
@@ -22,4 +23,5 @@
 
 
 (setq org-todo-keywords
-      '((sequence "TODO" "DRAFTED" "|" "DONE" "CANCELED")))
+      '((sequence "TODO" "OUTLINED" "FIRST DRAFT" "SECOND DRAFT"  "|" "DONE")))
+

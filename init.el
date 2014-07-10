@@ -1,17 +1,11 @@
 (defvar *emacs-load-start* (current-time)) ; Time .init.el
 
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
-(setq debug-on-error t)
+;(setq debug-on-error t)
 
 (setq dotfiles-dir "~/.emacs.d/") ;specify this dir
 
 (setq custom-file "~/.emacs.d/emacs-custom.el") ; seperate out setting edited by custom variables to remove clutter
 (load custom-file 'noerror)
-
-(global-unset-key "\C-z")
-
-(defalias 'yes-or-no-p 'y-or-n-p) ; y or n is enough
-(setq confirm-kill-emacs 'y-or-n-p)
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
@@ -24,6 +18,7 @@
   (dolist (f files)
     (load (expand-file-name (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" f)))
+
 
 (load-config-files '("latex-conf.el"
 		     "color-theme-conf.el"
@@ -38,15 +33,11 @@
 		     "irony-mode-conf.el"
 		     "erc-conf.el"
 		     "org-conf.el"
+		     "misc-conf.el"
 		     ))
 
 
 
-(setq inhibit-splash-screen t)
-(tool-bar-mode -1)
-(show-paren-mode 1)
-(transient-mark-mode t)
-(global-font-lock-mode t)
 
 ;; apparently doesn't work in emacs 24
 ;(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)

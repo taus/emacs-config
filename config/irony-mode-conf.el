@@ -1,20 +1,22 @@
-(require 'auto-complete)
-;(require 'yasnippet)
-(require 'irony) ;Note: hit `C-c C-b' to open build menu
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
-;; the ac plugin will be activated in each buffer using irony-mode
-(irony-enable 'ac)             ; hit C-RET to trigger completion
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's asynchronous function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
 
-(defun my-c++-hooks ()
-  "Enable the hooks in the preferred order: 'yas -> auto-complete -> irony'."
-  ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
-  ;; *may* persist after an expansion.
-  (yas-minor-mode 1)
-  (auto-complete-mode 1)
 
-  ;; avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
-  (when (member major-mode irony-known-modes)
-    (irony-mode 1)))
+(add-hook 'irony-mode-hook 'company-mode)
 
-(add-hook 'c++-mode-hook 'my-c++-hooks)
-(add-hook 'c-mode-hook 'my-c++-hooks)
+;(setq company-clang-arguments '("-I/usr/lib/llvm3.2/include" "-I/usr/include"))
+
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+    (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
