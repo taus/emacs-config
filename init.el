@@ -1,4 +1,4 @@
-(defvar *emacs-load-start* (current-time)) ; Time .init.el
+;(defvar *emacs-load-start* (current-time)) ; Time .init.el
 
 ;(setq debug-on-error t)
 

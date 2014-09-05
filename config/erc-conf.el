@@ -1,7 +1,7 @@
 ;(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT"))
 (setq erc-hide-list '("JOIN" "NICK"))
 (setq erc-autojoin-channels-alist
-          '(("freenode.net" "#emacs" "##c++-general" "##c++-basic" "##c++" "#latex"))
+          '(("freenode.net"  "##c++-general" "##c++-basic" "##c++" "#latex" "#emacs"))
 )
 
 (add-hook 'erc-mode-hook '(lambda ()

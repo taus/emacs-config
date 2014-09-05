@@ -1,13 +1,18 @@
 (add-hook 'c++-mode-hook (lambda ()
+			   (yas-global-mode 1)
+			   (subword-mode 1)
 			   )
 	  )
 
 
 (c-add-style "open-tissue" '("stroustrup" 
 			     (c-basic-offset . 2)
+
 			     (c-offsets-alist
+			      (inline-open . 0)
 ;			      (arglist-intro . c-lineup-arglist-intro-after-paren)
 ;			      (arglist-cont . -)
+;			      (arglist-cont-nonempty . -)
 ;			      (arglist-close . c-lineup-arglist)
 			      )
 			     ))
