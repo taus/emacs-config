@@ -9,7 +9,7 @@
 ;
 (add-hook 'gud-mode-hook (lambda ()
 			   (gud-tooltip-mode 1)
-			   (gdb-many-windows 1)
+;			   (gdb-many-windows 1)
 			   )
 	  )
 

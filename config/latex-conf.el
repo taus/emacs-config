@@ -32,7 +32,7 @@
 (setq-default TeX-master nil)
 (setq TeX-PDF-mode t)
 (setq LaTeX-command-style
-  '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)"))) ; fix pdflatex errors
+  '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout) -shell-escape"))) ; fix pdflatex errors
 
 
 ;; nomenclature for latex

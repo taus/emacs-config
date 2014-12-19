@@ -18,3 +18,4 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 
+(set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
